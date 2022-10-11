@@ -1,0 +1,12 @@
+(define extend-env
+  (lambda (list-of-varname list-of-value env) ;((x y z) (1 2 3) env)
+    (cond
+      ((null? list-of-varname) env)
+      ((null? list-of-value) env)
+      (else (extend-env (cdr list-of-varname) (cdr list-of-value)
+       (cons (list (car list-of-varname)
+                   (car list-of-value))
+             env)))
+      )
+    )
+  )
