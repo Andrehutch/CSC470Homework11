@@ -1,1 +1,11 @@
 (define env '((a 1) (b 2) (c 5)))
+
+(define resolve
+  (lambda (environment varname)
+    (cond
+      ((null? environment) #false)
+      ((equal? (caar environment) varname) (cadar environment))
+      (else (resolve (cdr environment) varname))
+      )
+    )
+  )
